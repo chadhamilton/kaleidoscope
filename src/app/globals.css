@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-kc-gray font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-kc-slate font-semibold;
+  }
+}
+
+@layer utilities {
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animate-delay-400 {
+    animation-delay: 400ms;
+  }
+  .animate-delay-500 {
+    animation-delay: 500ms;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-kc-cloud hover:shadow-md transition-shadow;
+  }
+
+  .btn-primary {
+    @apply bg-kc-blue text-white px-4 py-2 rounded-lg font-medium hover:bg-kc-blue-dark transition-colors;
+  }
+
+  .btn-secondary {
+    @apply bg-white border border-kc-cloud text-kc-slate px-4 py-2 rounded-lg font-medium hover:bg-kc-pearl transition-colors;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-kc-gray px-4 py-2 rounded-lg font-medium hover:bg-kc-pearl transition-colors;
+  }
+
+  .input {
+    @apply bg-white border border-kc-cloud rounded-lg px-4 py-2 focus:border-kc-blue focus:outline-none focus:ring-2 focus:ring-kc-blue/20 transition-colors;
+  }
+
+  .badge {
+    @apply inline-flex px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .progress-bar {
+    @apply h-2 bg-kc-cloud rounded-full overflow-hidden;
+  }
+
+  .progress-fill {
+    @apply h-full bg-kc-blue rounded-full transition-all duration-500;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-kc-pearl;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-kc-cloud rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-kc-mist;
+}
