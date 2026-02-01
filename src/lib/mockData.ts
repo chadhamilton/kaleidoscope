@@ -124,7 +124,7 @@ export const productImages = {
   monitorArm: 'https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=800&q=80',
   panels: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80',
   pod: 'https://images.unsplash.com/photo-1497215842964-222b430dc094?w=800&q=80',
-  gesture: 'https://images.unsplash.com/photo-1589364229440-0b37b32b5fe5?w=800&q=80',
+  gesture: 'https://images.unsplash.com/photo-1592078615290-033ee584e267?w=800&q=80',
 };
 
 // Products
@@ -503,4 +503,108 @@ export function getEventTypeColor(type: string): string {
     meeting: 'bg-kc-warning/10 text-kc-warning',
   };
   return colors[type] || 'bg-kc-mist/10 text-kc-mist';
+}
+
+// ============================================
+// SCHEDULING TYPES
+// ============================================
+
+export interface TimeSlot {
+  id: string;
+  label: string;
+  startTime: string;
+  endTime: string;
+}
+
+export interface Installation {
+  id: string;
+  projectId: string;
+  projectName: string;
+  date: string;
+  timeSlotId: string;
+  contactPerson: string;
+  phoneNumber: string;
+  notes: string;
+  status: 'scheduled' | 'completed' | 'cancelled';
+  createdAt: string;
+}
+
+// ============================================
+// TIMESLOTS DATA
+// ============================================
+
+export const timeSlots: TimeSlot[] = [
+  {
+    id: 'slot-1',
+    label: '9:00 AM - 12:00 PM',
+    startTime: '09:00',
+    endTime: '12:00',
+  },
+  {
+    id: 'slot-2',
+    label: '1:00 PM - 5:00 PM',
+    startTime: '13:00',
+    endTime: '17:00',
+  },
+];
+
+// ============================================
+// INSTALLATIONS (MOCK DATA)
+// ============================================
+
+export const installations: Installation[] = [
+  {
+    id: 'inst-1',
+    projectId: 'proj-1',
+    projectName: 'Executive Suite Renovation',
+    date: '2025-02-18',
+    timeSlotId: 'slot-1',
+    contactPerson: 'John Miller',
+    phoneNumber: '(555) 123-4567',
+    notes: 'Please check in at front desk. Freight elevator required.',
+    status: 'scheduled',
+    createdAt: '2025-01-25T10:00:00Z',
+  },
+  {
+    id: 'inst-2',
+    projectId: 'proj-1',
+    projectName: 'Executive Suite Renovation',
+    date: '2025-02-25',
+    timeSlotId: 'slot-2',
+    contactPerson: 'Sarah Johnson',
+    phoneNumber: '(555) 987-6543',
+    notes: 'Final furniture installation for conference room.',
+    status: 'scheduled',
+    createdAt: '2025-01-28T14:30:00Z',
+  },
+  {
+    id: 'inst-3',
+    projectId: 'proj-2',
+    projectName: 'Open Office Collaboration Hub',
+    date: '2025-03-05',
+    timeSlotId: 'slot-1',
+    contactPerson: 'Mike Davis',
+    phoneNumber: '(555) 456-7890',
+    notes: 'Acoustic panel installation - floors 2-3.',
+    status: 'scheduled',
+    createdAt: '2025-02-01T09:15:00Z',
+  },
+];
+
+// ============================================
+// SCHEDULING HELPER FUNCTIONS
+// ============================================
+
+export function getInstallationStatusColor(status: string): string {
+  const colors: Record<string, string> = {
+    scheduled: 'bg-kc-info/10 text-kc-info',
+    completed: 'bg-kc-success/10 text-kc-success',
+    cancelled: 'bg-kc-error/10 text-kc-error',
+  };
+  return colors[status] || 'bg-kc-mist/10 text-kc-mist';
+}
+
+export function getTimeSlotLabel(timeSlotId: string): string {
+  const slot = timeSlots.find(s => s.id === timeSlotId);
+  return slot?.label || 'Unknown';
 }

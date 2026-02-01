@@ -8,6 +8,7 @@ import {
   FolderKanban,
   Package,
   ShoppingBag,
+  CalendarDays,
   Palette,
   Grid3X3,
   Calculator,
@@ -24,6 +25,7 @@ const mainNavItems = [
   { name: 'Projects', href: '/projects', icon: FolderKanban },
   { name: 'Orders', href: '/orders', icon: Package },
   { name: 'Products', href: '/products', icon: ShoppingBag },
+  { name: 'Scheduling', href: '/scheduling', icon: CalendarDays },
 ];
 
 const designToolsItems = [
